@@ -19,11 +19,11 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-	ground1 = new ground(width/2, height-50,width, 5);
-	dustbin1= new dustbin(width/3+150,height-80,25,100);
-	dustbin2= new dustbin(2*width/3+150, height-80,25,100);
-	dustbin3=new dustbin(width/2+150,height-70,800/3,25);
-	paper1=new paper(400,350,100);
+	ground1 = new Ground(width/2, height-80,width, 5);
+	dustbin1= new Dustbin(width/3+150,height-107.5,25,100);
+	dustbin2= new Dustbin(2*width/3+150, height-107.5,25,100);
+	dustbin3=new Dustbin(width/2+150,height-70,800/3,25);
+	paper1=new Paper(100,350,35);
 	Engine.run(engine);
   
 }
@@ -41,5 +41,11 @@ function draw() {
  
 }
 
-
+function keyPressed()
+{
+	if(keyCode === UP_ARROW)
+	{
+		Matter.Body.applyForce(paper1.body, paper1.body.position, {x:150,y:-150});
+	}
+}
 
